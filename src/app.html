@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="%sveltekit.assets%/favicon.png" />
+        <meta name="viewport" content="width=device-width" />
+        <!-- Скрипт для мгновенного применения темы до загрузки Svelte -->
+        <script>
+            (function () {
+                // Получаем тему из localStorage или используем тёмную по умолчанию
+                const savedTheme = localStorage.getItem("theme") || "dark";
+
+                // Установка CSS-переменной для текущей темы (будет использоваться шапкой)
+                document.documentElement.style.setProperty(
+                    "--current-theme",
+                    savedTheme,
+                );
+
+                // Применяем класс для темы
+                if (savedTheme === "light") {
+                    document.documentElement.classList.add("light-theme");
+                    document.documentElement.style.backgroundColor =
+                        "rgb(245, 245, 247)";
+                    document.documentElement.style.color = "rgb(33, 33, 33)";
+                    // Устанавливаем цвет для шапки сразу
+                    document.documentElement.style.setProperty(
+                        "--header-bg",
+                        "rgba(245, 245, 247, 0.7)",
+                    );
+                } else {
+                    document.documentElement.classList.remove("light-theme");
+                    document.documentElement.style.backgroundColor =
+                        "rgb(23, 29, 35)";
+                    document.documentElement.style.color = "rgb(237, 237, 237)";
+                    // Устанавливаем цвет для шапки сразу
+                    document.documentElement.style.setProperty(
+                        "--header-bg",
+                        "rgba(23, 29, 35, 0.7)",
+                    );
+                }
+
+                // Скрываем страницу пока применяются стили (предотвращает мигание)
+                document.documentElement.style.visibility = "hidden";
+
+                // Показываем страницу через небольшую задержку
+                setTimeout(function () {
+                    document.documentElement.style.visibility = "visible";
+                }, 50);
+            })();
+        </script>
+        %sveltekit.head%
+    </head>
+    <body data-sveltekit-preload-data="hover">
+        <div style="display: contents">%sveltekit.body%</div>
+    </body>
+</html>

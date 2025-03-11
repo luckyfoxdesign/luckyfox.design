@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/* CSS Reset and Base */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Theme Variables */
+:root {
+    /* Dark Theme (Default) */
+    --bg-primary: rgb(23, 29, 35);
+    --bg-secondary: rgb(30, 38, 46);
+    --bg-tertiary: rgb(42, 52, 63);
+    --text-primary: rgb(237, 237, 237);
+    --text-secondary: rgba(237, 237, 237, 0.7);
+    --accent-color: rgb(105, 132, 255);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --header-bg: rgba(23, 29, 35, 0.7);
+    --error-color: rgb(255, 70, 70);
+    --success-color: rgb(70, 200, 120);
+    --info-color: rgb(70, 150, 255);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --visited-link-color: rgb(139, 111, 191);
+
+    /* Theme system indicators */
+    --current-theme: "dark";
+    color-scheme: dark;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+}
+
+/* Light Theme */
+:root.light-theme {
+    --bg-primary: rgb(245, 245, 247);
+    --bg-secondary: rgb(230, 230, 235);
+    --bg-tertiary: rgb(214, 214, 219);
+    --text-primary: rgb(33, 33, 33);
+    --text-secondary: rgba(33, 33, 33, 0.7);
+    --accent-color: rgb(0, 85, 255);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --header-bg: rgba(245, 245, 247, 0.7);
+    --error-color: rgb(220, 50, 50);
+    --success-color: rgb(40, 170, 90);
+    --info-color: rgb(20, 100, 245);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --visited-link-color: rgb(110, 90, 170);
+
+    /* Theme system indicators */
+    --current-theme: "light";
+    color-scheme: light;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+}
+
+/* Smooth Theme Transitions */
+body,
+body * {
+    transition:
+        background-color 0.3s ease-out,
+        color 0.3s ease-out,
+        border-color 0.3s ease-out,
+        box-shadow 0.3s ease-out,
+        opacity 0.3s ease-out;
+}
+
+/* Prevent transition on page load */
+.no-transition {
+    transition: none !important;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Utility classes */
+.scroll-reveal {
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+/* Focus Styles - Accessibility */
+:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}

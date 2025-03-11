@@ -1,0 +1,14 @@
+services:
+  s_sveltekit_luckyfoxdesign:
+    build:
+      context: ./
+    working_dir: /sveltekit
+    container_name: c-sveltekit-luckyfoxdesign
+    volumes:
+      - ./:/sveltekit
+    ports:
+      - 3000:3000
+    # env_file:
+    #   - ./.env
+    # stdin_open: true
+    # tty: true
